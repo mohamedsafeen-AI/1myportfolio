@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Mango Grotesque Font */
+@font-face {
+  font-family: "Mango Grotesque";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/mangogrotesque-regular.woff2") format("woff2"),
+       url("/fonts/mangogrotesque-regular.woff") format("woff");
+}
+
+/* Fallback: Import from Google Fonts if local font not found */
+@import url('https://fonts.googleapis.com/css2?family=Mango+Grotesque:wght@400;500;600;700&display=swap');
+
 @theme {
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));
@@ -64,16 +76,16 @@
 
 @layer base {
   :root {
-  --background: 222 47% 4%;
-  --foreground: 213 31% 91%;
+    --background: 0 0% 98%;
+    --foreground: 222 47% 4%;
 
-  --card: 222 47% 8%;
+    --card: 0 0% 100%;
 
-  --primary: 250 65% 65%;
-  --primary-foreground: 213 31% 91%;
+    --primary: 220 98% 60%;
+    --primary-foreground: 222 47% 4%;
 
-  --border: 217 33% 20%;
-}
+    --border: 215 20% 65%;
+  }
 
 
   * {
@@ -88,64 +100,105 @@
     @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-}
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-
-  @media (width >= 640px) {
-    max-width: 640px;
-  }
-  @media (width >= 768px) {
-    max-width: 768px;
-  }
-  @media (width >= 1024px) {
-    max-width: 1024px;
-  }
-  @media (width >= 1280px) {
-    max-width: 1280px;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0s !important;
+      transition-duration: 0s !important;
+    }
   }
 }
 
-@utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+/* Light theme specific utilities */
+@layer utilities {
+  .bg-light {
+    @apply bg-white;
+  }
+
+  .text-dark {
+    @apply text-slate-900;
+  }
+
+  .text-secondary {
+    @apply text-slate-600;
+  }
+
+  .border-light {
+    @apply border-slate-200;
+  }
+
+  .hover-text-dark:hover {
+    @apply text-slate-800;
+  }
+
+  /* Mango Grotesque font family */
+  .font-mango {
+    font-family: "Mango Grotesque", sans-serif;
+  }
+
+  .font-mango-bold {
+    font-family: "Mango Grotesque", sans-serif;
+    font-weight: 700;
+  }
+
+  .font-mango-medium {
+    font-family: "Mango Grotesque", sans-serif;
+    font-weight: 500;
+  }
 }
 
-@utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+/* Inverse animation: black particles/dots on white background */
+@keyframes inverse-float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
 }
 
-@utility gradient-border {
-  @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
+@keyframes inverse-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
 }
 
-@utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
-         hover:scale-105 active:scale-95;
+/* Inverse stars - black stars on white background */
+.inverse-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 50%;
+  animation: inverse-float 8s ease-in-out infinite;
+  animation-delay: calc(var(--delay, 0) * 1s);
 }
 
-@utility star {
-  @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+.inverse-star-large {
+  width: 6px;
+  height: 6px;
+  animation: inverse-float 6s ease-in-out infinite;
 }
 
-@utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+/* Inverse meteor - black meteor on white */
+.inverse-meteor {
+  position: absolute;
+  border-radius: 2px;
+  background-color: #000;
+  animation: inverse-float 10s linear infinite;
 }
 
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .inverse-star,
+  .inverse-meteor {
+    animation: none;
+  }
 }

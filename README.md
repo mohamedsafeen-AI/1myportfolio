@@ -1,4 +1,4 @@
-# Harini Sri K B Portfolio
+# Mohamed Safeen M Portfolio
   <br />
   <br />
   <h3 align="center">Personal Portfolio Website</h3>
@@ -62,7 +62,7 @@ This repository contains my personal portfolio website built using React, Vite, 
 ### Clone and Run
 
 ```bash
-git clone https://github.com/harinisrikb/portfolio.git
+git clone https://github.com/mohamedsafeenM/portfolio.git
 cd portfolio
 npm install
 npm run dev
@@ -82,14 +82,14 @@ http://localhost:5173
 
 ## Live Demo
 
-https://portfolio-harinisrikbs-projects.vercel.app
+https://portfolio-mohamedsafeenm-projects.vercel.app
 
 ---
 
 ## Contact
 
 LinkedIn:
-https://linkedin.com/in/harini-sri-k-b-a06214323
+https://linkedin.com/in/mohamed-safeen-m
 
 GitHub:
-https://github.com/harinisrikb
+https://github.com/mohamedsafeenM

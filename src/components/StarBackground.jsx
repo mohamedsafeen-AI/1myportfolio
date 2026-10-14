@@ -33,7 +33,7 @@ export const StarBackground = () => {
         size: Math.random() * 3 + 1,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        opacity: Math.random() * 0.5 + 0.5,
+        opacity: Math.random() * 0.8 + 0.2,
         animationDuration: Math.random() * 4 + 2,
       });
     }
@@ -64,10 +64,8 @@ export const StarBackground = () => {
       {stars.map((star) => (
         <div
           key={star.id}
-          className="star animate-pulse-subtle"
+          className="inverse-star"
           style={{
-            width: star.size + "px",
-            height: star.size + "px",
             left: star.x + "%",
             top: star.y + "%",
             opacity: star.opacity,
@@ -79,14 +77,14 @@ export const StarBackground = () => {
       {meteors.map((meteor) => (
         <div
           key={meteor.id}
-          className="meteor animate-meteor"
+          className="inverse-meteor"
           style={{
-            width: meteor.size * 50 + "px",
-            height: meteor.size * 2 + "px",
             left: meteor.x + "%",
             top: meteor.y + "%",
             animationDelay: meteor.delay,
             animationDuration: meteor.animationDuration + "s",
+            width: meteor.size * 50 + "px",
+            height: meteor.size * 2 + "px",
           }}
         />
       ))}

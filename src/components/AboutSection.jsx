@@ -1,94 +1,97 @@
-import { Briefcase, Code, User } from "lucide-react";
+import React from 'react';
 
 export const AboutSection = () => {
-  return (
-    <section id="about" className="py-24 px-4 relative">
-      {" "}
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          About <span className="text-primary"> Me</span>
-        </h2>
+  const highlights = [
+    {
+      icon: (
+        <svg className="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
+      title: "Web Development",
+      description: "Building responsive and user-friendly web applications using HTML, CSS, JavaScript, React, and modern web technologies."
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      ),
+      title: "AI-Powered Web & E-Commerce",
+      description: "Building modern websites, web applications, and e-commerce platforms integrated with AI tools like Gemini API, Google Apps Script, and Google Sheets."
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+      ),
+      title: "Full Stack Development",
+      description: "Building scalable web applications and APIs using React, Express.js, Python, Supabase, and REST APIs."
+    }
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">
-              AI & ML Graduate | Aspiring Software Developer
+  return (
+    <section id="about" className="py-24 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl">
+        
+        {/* Section Heading - Perfect Center Alignment & Premium Font Styling */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight font-sans">
+            About <span className="text-slate-900">Me</span>
+          </h2>
+          <div className="w-12 h-1 bg-slate-900 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        {/* 2-Column Grid Layout - Pixel Perfect Grid Alignment */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Column - Biography Details (5 cols) */}
+          <div className="lg:col-span-6 space-y-6 text-left">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-snug">
+              AI Full Stack Developer <span className="text-slate-400 font-light">|</span> Full Stack Web Developer
             </h3>
 
-            <p className="text-muted-foreground">
-              I am a B.Tech graduate in Computer Science Engineering with a
-              specialization in Artificial Intelligence and Machine Learning.
-              I enjoy building software applications and exploring AI-driven
-              solutions to real-world problems.
+            <p className="text-slate-600 text-base md:text-lg leading-relaxed font-normal">
+              Final-year B.Tech Information Technology student at Aalim Muhammed Salegh College of Engineering (2023–2027). AI Full Stack Developer passionate about building scalable web applications, e-commerce stores, and AI-driven interactive products.
             </p>
 
-            <p className="text-muted-foreground">
-              Through academic projects, technical workshops, and my web
-              development internship at CodeBind Technologies, I have gained
-              experience in problem-solving, teamwork, and software
-              development. I am continuously learning new technologies and
-              improving my skills.
+            <p className="text-slate-600 text-base leading-relaxed font-normal">
+              Skilled in HTML, CSS, JavaScript, React, Express.js, Python, Supabase, Google Apps Script, Google Sheets, and Gemini API.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
-                {" "}
+            <div className="pt-4">
+              <a 
+                href="#contact" 
+                className="inline-flex items-center justify-center px-7 py-3.5 bg-slate-900 hover:bg-black text-white text-sm font-semibold rounded-full shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              >
                 Get In Touch
               </a>
-
-              <a
-  href="/Harini_Resume.pdf"
-  download
-  className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
->
-  Download Resume
-</a>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary" />
+          {/* Right Column - Highlight Feature Cards (7 cols) */}
+          <div className="lg:col-span-6 space-y-4">
+            {highlights.map((item, index) => (
+              <div 
+                key={index} 
+                className="bg-slate-50/80 border border-slate-200/80 hover:border-slate-400 rounded-2xl p-6 transition-all duration-300 shadow-sm hover:shadow-md flex items-start space-x-5"
+              >
+                <div className="p-3 bg-white rounded-xl shadow-xs border border-slate-100 shrink-0">
+                  {item.icon}
                 </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Software Development</h4>
-                  <p className="text-muted-foreground">
-                    Building software applications using Java, Python, and modern web technologies.
+                <div>
+                  <h4 className="text-lg font-bold text-slate-900 mb-1.5 tracking-tight">
+                    {item.title}
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed font-normal">
+                    {item.description}
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <User className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">Artificial Intelligence & ML</h4>
-                  <p className="text-muted-foreground">
-                    Exploring machine learning concepts and developing AI-based solutions for practical use cases.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary" />
-                </div>
-
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">Frontend Developer</h4>
-                  <p className="text-muted-foreground">
-                    Building responsive and user-friendly web applications using
-                    HTML, CSS, JavaScript, React, and modern web technologies.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
+
         </div>
       </div>
     </section>
